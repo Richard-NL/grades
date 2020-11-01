@@ -25,8 +25,7 @@ class GradesCommand extends Command
 
     protected function configure()
     {
-        $this
-            ->setDescription('Shows the grades of students');
+        $this->setDescription('Shows the grades of students');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -35,6 +34,7 @@ class GradesCommand extends Command
 
         $table = new Table($output);
         $table->setHeaders(['Student', 'Grade', 'Status']);
+
         $index = 0;
         foreach ($studentGrades as $studentId => $studentGrade) {
             $table->setRow($index, [$studentId, $studentGrade, $this->determineStatusText($studentGrade)]);

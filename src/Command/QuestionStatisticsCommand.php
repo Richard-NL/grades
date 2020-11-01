@@ -25,15 +25,14 @@ class QuestionStatisticsCommand extends Command
 
     protected function configure()
     {
-        $this
-            ->setDescription('Show statistics to determine the difficulty of a question');
+        $this->setDescription('Show statistics to determine the difficulty of a question');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $table = new Table($output);
-        $table
-            ->setHeaders(['Question', 'P’-value', 'R-value']);
+        $table->setHeaders(['Question', 'P’-value', 'R-value']);
+
         $index = 0;
         foreach ($this->questionStatisticProcessor->questionStatistics() as $questionName => $questionStatistic) {
             $table->setRow($index, [$questionName, $questionStatistic['p'], $questionStatistic['r']]);
