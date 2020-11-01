@@ -36,7 +36,7 @@ class QuestionStatisticsCommand extends Command
             ->setHeaders(['Question', 'P’-value', 'R-value']);
         $index = 0;
         foreach ($this->questionStatisticProcessor->questionStatistics() as $questionName => $questionStatistic) {
-            $table->setRow($index, [$questionName, $questionStatistic['r'], $questionStatistic['p']]);
+            $table->setRow($index, [$questionName, $questionStatistic['p'], $questionStatistic['r']]);
             $index++;
         }
 
