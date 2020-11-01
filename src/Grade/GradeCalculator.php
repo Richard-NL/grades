@@ -13,7 +13,7 @@ class GradeCalculator
     private const BOUNDARY_LOWEST_GRADE_PERCENTAGE = 20;
     private const BOUNDARY_PASSED_GRADE_PERCENTAGE = 70;
 
-    public function calculatePercentage(int $maxScore, int $score): float
+    public function calculatePercentage(int $maxScore, float $score): float
     {
         return (float) $score / ($maxScore / 100);
     }

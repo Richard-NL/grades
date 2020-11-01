@@ -10,7 +10,7 @@ class GradeCalculatorTest extends TestCase
     /**
      * @dataProvider calculatePercentageProvider
      */
-    public function testCalculatePercentage(float $expected, int $maxScore, int $score): void
+    public function testCalculatePercentage(float $expected, int $maxScore, float $score): void
     {
         $gradeCalculator = new GradeCalculator();
         $this->assertSame($expected, round($gradeCalculator->calculatePercentage($maxScore, $score), 1));
@@ -33,6 +33,7 @@ class GradeCalculatorTest extends TestCase
             [25, 200, 50],
             [1, 400, 4],
             [33.3, 90, 30],
+            [50, 3, 1.5],
         ];
     }
 
