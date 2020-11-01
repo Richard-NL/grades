@@ -2,6 +2,9 @@
     "doctrine/inflector": {
         "version": "1.4.3"
     },
+    "markrogoyski/math-php": {
+        "version": "v1.6.0"
+    },
     "nikic/php-parser": {
         "version": "v4.10.2"
     },
