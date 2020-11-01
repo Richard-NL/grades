@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Grades\TestResultProcessor;
+use App\Grades\GradeResultProcessor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,11 +13,11 @@ class GradesCommand extends Command
     protected static $defaultName = 'grades:show';
 
     /**
-     * @var TestResultProcessor
+     * @var GradeResultProcessor
      */
-    private TestResultProcessor $testResultProcessor;
+    private GradeResultProcessor $testResultProcessor;
 
-    public function __construct(TestResultProcessor $testResultProcessor)
+    public function __construct(GradeResultProcessor $testResultProcessor)
     {
         parent::__construct();
         $this->testResultProcessor = $testResultProcessor;

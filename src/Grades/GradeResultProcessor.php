@@ -4,7 +4,7 @@ namespace App\Grades;
 
 use App\Spreadsheet\ExcelReader;
 
-class TestResultProcessor
+class GradeResultProcessor
 {
     private GradeCalculator $gradeCalculator;
 
