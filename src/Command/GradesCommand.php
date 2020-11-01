@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Grades\TestResultProcessor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -11,6 +12,17 @@ class GradesCommand extends Command
 {
     protected static $defaultName = 'grades:show';
 
+    /**
+     * @var TestResultProcessor
+     */
+    private TestResultProcessor $testResultProcessor;
+
+    public function __construct(TestResultProcessor $testResultProcessor)
+    {
+        parent::__construct();
+        $this->testResultProcessor = $testResultProcessor;
+    }
+
     protected function configure()
     {
         $this
@@ -19,17 +31,15 @@ class GradesCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $studentGrades = $this->testResultProcessor->studentGrades();
+
         $table = new Table($output);
-        $table
-            ->setHeaders(['Student', 'Grade', 'Status'])
-            ->setRows(
-                [
-                    ['Jake', 1, $this->determineStatusText(1)],
-                    ['Catz', 3, $this->determineStatusText(3)],
-                    ['Daisy', 5.5, $this->determineStatusText(5.5)],
-                    ['Hektor', 10, $this->determineStatusText(10)],
-                ]
-            );
+        $table->setHeaders(['Student', 'Grade', 'Status']);
+        $index = 0;
+        foreach ($studentGrades as $studentId => $studentGrade) {
+            $table->setRow($index, [$studentId, $studentGrade, $this->determineStatusText($studentGrade)]);
+            $index++;
+        }
         $table->render();
 
         return Command::SUCCESS;
