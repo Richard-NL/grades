@@ -6,7 +6,7 @@ use App\Grade\SpreadSheetData;
 
 class ExcelReader
 {
-    public function getSpreadData(): SpreadSheetData
+    public function getSpreadSheetData(): SpreadSheetData
     {
         return new SpreadSheetData();
     }

@@ -18,7 +18,7 @@ class GradeResultProcessor
 
     public function studentGrades(): array
     {
-        $sheetData = $this->excelReader->getSpreadData();
+        $sheetData = $this->excelReader->getSpreadSheetData();
         $grades = [];
 
         foreach ($sheetData->studentScores() as $studentId => $studentScores) {
