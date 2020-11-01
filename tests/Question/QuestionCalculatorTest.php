@@ -3,6 +3,7 @@
 namespace App\Tests\Question;
 
 use App\Question\QuestionCalculator;
+use MathPHP\Statistics\Correlation;
 use PHPUnit\Framework\TestCase;
 
 class QuestionCalculatorTest extends TestCase
@@ -13,7 +14,7 @@ class QuestionCalculatorTest extends TestCase
      */
     public function testPValue(float $expected, array $studentQuestionScore, int $questionMaxScore): void
     {
-        $questionCalculator = new QuestionCalculator();
+        $questionCalculator = new QuestionCalculator($this->createMock(Correlation::class));
         $this->assertEquals($expected, $questionCalculator->pValue($questionMaxScore, ...$studentQuestionScore));
     }
 
