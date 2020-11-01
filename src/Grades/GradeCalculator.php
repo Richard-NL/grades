@@ -4,9 +4,15 @@ namespace App\Grades;
 
 class GradeCalculator
 {
-    private const GRADE_INCREMENT_1 = 0.09;
-    private const GRADE_INCREMENT_2 = 0.15
-    ;
+    private const INCREMENT_GRADE_WHEN_FAILED = 0.09;
+    private const INCREMENT_GRADE_WHEN_PASSED = 0.15;
+
+    private const GRADE_LOWEST = 1.0;
+    private const GRADE_PASSED = 5.5;
+
+    private const BOUNDARY_LOWEST_GRADE_PERCENTAGE = 20;
+    private const BOUNDARY_PASSED_GRADE_PERCENTAGE = 70;
+
     public function calculatePercentage(int $maxScore, int $score): float
     {
         return (float) $score / ($maxScore / 100);
@@ -14,14 +20,38 @@ class GradeCalculator
 
     public function calculateGrade(float $percentageCorrect): float
     {
-        if ($percentageCorrect < 20) {
-            return 1.0;
+
+        if ($percentageCorrect < self::BOUNDARY_LOWEST_GRADE_PERCENTAGE) {
+            return self::GRADE_LOWEST;
         }
 
-        if ($percentageCorrect >= 20 && $percentageCorrect < 70) {
-            return 1.0 + ($percentageCorrect - 20) * self::GRADE_INCREMENT_1;
+        if ($percentageCorrect >= self::BOUNDARY_LOWEST_GRADE_PERCENTAGE
+            && $percentageCorrect < self::BOUNDARY_PASSED_GRADE_PERCENTAGE) {
+
+            return $this->gradeFormula(
+                self::GRADE_LOWEST,
+                $percentageCorrect,
+                self::BOUNDARY_LOWEST_GRADE_PERCENTAGE,
+                self::INCREMENT_GRADE_WHEN_FAILED
+            );
         }
 
-        return 5.5 + ($percentageCorrect - 70) * self::GRADE_INCREMENT_2;
+        return $this->gradeFormula(
+            self::GRADE_PASSED,
+            $percentageCorrect,
+            self::BOUNDARY_PASSED_GRADE_PERCENTAGE,
+            self::INCREMENT_GRADE_WHEN_PASSED
+        );
+    }
+
+
+    private function gradeFormula(
+        float $gradeBoundary,
+        float $percentageCorrect,
+        int $boundaryGradePercentage,
+        float $gradeIncrement
+    ): float {
+        return round($gradeBoundary
+               + ($percentageCorrect - $boundaryGradePercentage) * $gradeIncrement, 1);
     }
 }
