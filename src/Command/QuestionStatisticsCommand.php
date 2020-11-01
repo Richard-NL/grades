@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class QuestionStatisticsCommand extends Command
 {
-    protected static $defaultName = 'grades:question_statistics';
+    protected static $defaultName = 'student-test:question-statistics';
 
 
     private QuestionStatisticProcessor $questionStatisticProcessor;

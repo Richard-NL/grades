@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GradesCommand extends Command
 {
-    protected static $defaultName = 'grades:show';
+    protected static $defaultName = 'student-test:grades';
 
     /**
      * @var GradeResultProcessor
