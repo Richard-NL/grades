@@ -2,7 +2,7 @@
 
 namespace App\Grade;
 
-class SpreadSheetData
+class SpreadsheetData
 {
     public function maxTestScore()
     {

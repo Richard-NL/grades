@@ -2,12 +2,12 @@
 
 namespace App\Spreadsheet;
 
-use App\Grade\SpreadSheetData;
+use App\Grade\SpreadsheetData;
 
 class ExcelReader
 {
-    public function getSpreadSheetData(): SpreadSheetData
+    public function getSpreadSheetData(): SpreadsheetData
     {
-        return new SpreadSheetData();
+        return new SpreadsheetData();
     }
 }
