@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Question\QuestionStatisticProcessor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
@@ -15,6 +16,15 @@ class QuestionStatisticsCommand extends Command
     protected static $defaultName = 'grades:question_statistics';
 
 
+    private QuestionStatisticProcessor $questionStatisticProcessor;
+
+    public function __construct(QuestionStatisticProcessor $questionStatisticProcessor)
+    {
+        parent::__construct();
+
+        $this->questionStatisticProcessor = $questionStatisticProcessor;
+    }
+
     protected function configure()
     {
         $this
@@ -26,14 +36,13 @@ class QuestionStatisticsCommand extends Command
     {
         $table = new Table($output);
         $table
-            ->setHeaders(['Question', 'P’-value', 'R-value'])
-            ->setRows([
-                          ['Question 1', 1, 1],
-                          ['Question 2', 0, 0],
-                          ['Question 3', 0.1, -1],
-                          ['Question 4', 0.5, 0.55],
-                      ])
-        ;
+            ->setHeaders(['Question', 'P’-value', 'R-value']);
+        $index = 0;
+        foreach ($this->questionStatisticProcessor->questionStatistics() as $questionName => $questionStatistic) {
+            $table->setRow($index, [$questionName, $questionStatistic['r'], $questionStatistic['p']]);
+            $index++;
+        }
+
         $table->render();
         return Command::SUCCESS;
     }
