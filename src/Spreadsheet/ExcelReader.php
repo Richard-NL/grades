@@ -2,7 +2,7 @@
 
 namespace App\Spreadsheet;
 
-use App\Grades\SpreadSheetData;
+use App\Grade\SpreadSheetData;
 
 class ExcelReader
 {

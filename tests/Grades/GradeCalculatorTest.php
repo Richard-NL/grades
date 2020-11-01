@@ -2,7 +2,7 @@
 
 namespace App\Tests\Grades;
 
-use App\Grades\GradeCalculator;
+use App\Grade\GradeCalculator;
 use PHPUnit\Framework\TestCase;
 
 class GradeCalculatorTest extends TestCase

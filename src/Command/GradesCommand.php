@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Grades\GradeResultProcessor;
+use App\Grade\GradeResultProcessor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
