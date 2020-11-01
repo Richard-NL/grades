@@ -13,10 +13,10 @@ class QuestionCalculator
         $this->correlation = $correlation;
     }
     
-    public function pValue(int $maxScore, float ...$studentGrades): float
+    public function pValue(int $questionMaxScore, float ...$studentQuestionScore): float
     {
-        $average = array_sum(array_values($studentGrades)) / count($studentGrades);
-        return round($average /$maxScore, 2);
+        $average = array_sum(array_values($studentQuestionScore)) / count($studentQuestionScore);
+        return round($average /$questionMaxScore, 2);
     }
 
     public function rValue(array $questionScorePerStudent, array $studentGrades): float

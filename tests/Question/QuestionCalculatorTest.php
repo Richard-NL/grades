@@ -11,10 +11,10 @@ class QuestionCalculatorTest extends TestCase
     /**
      * @dataProvider pValueProvider
      */
-    public function testPValue(float $expected, array $studentGrades, int $maxScore): void
+    public function testPValue(float $expected, array $studentQuestionScore, int $questionMaxScore): void
     {
         $questionCalculator = new QuestionCalculator();
-        $this->assertEquals($expected, $questionCalculator->pValue($maxScore, ...$studentGrades));
+        $this->assertEquals($expected, $questionCalculator->pValue($questionMaxScore, ...$studentQuestionScore));
     }
 
     public function pValueProvider(): array
