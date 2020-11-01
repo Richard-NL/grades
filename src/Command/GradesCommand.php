@@ -25,7 +25,7 @@ class GradesCommand extends Command
 
     protected function configure()
     {
-        $this->setDescription('Shows the grades of students');
+        $this->setDescription('Shows student grades');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
