@@ -31,3 +31,7 @@ services:
     # please note that last definitions always *replace* previous ones
 
     MathPHP\Statistics\Correlation: ~
+
+    App\Spreadsheet\ExcelReader:
+        arguments:
+            $filepath: '%kernel.project_dir%/sheets/Assignment.xlsx'

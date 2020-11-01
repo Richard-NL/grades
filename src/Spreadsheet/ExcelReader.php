@@ -7,9 +7,16 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ExcelReader
 {
+    private string $filepath;
+
+    public function __construct(string $filepath)
+    {
+        $this->filepath = $filepath;
+    }
+
     public function getSpreadSheetData(): SpreadsheetData
     {
-        $spreadsheet = IOFactory::load(__DIR__ . '/../../sheets/Assignment.xlsx');
+        $spreadsheet = IOFactory::load($this->filepath);
         $worksheet = $spreadsheet->getActiveSheet();
         $rawData = $worksheet->toArray();
 
