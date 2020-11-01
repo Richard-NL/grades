@@ -8,7 +8,6 @@ use App\Spreadsheet\SpreadsheetDataFormatter;
 
 class QuestionStatisticProcessor
 {
-
     private ExcelReader $excelReader;
 
     private QuestionCalculator $questionCalculator;
@@ -53,6 +52,5 @@ class QuestionStatisticProcessor
         }
 
         return $questionStatistics;
-
     }
 }
