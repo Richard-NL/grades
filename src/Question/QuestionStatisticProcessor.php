@@ -43,10 +43,15 @@ class QuestionStatisticProcessor
                 ...array_values($questionScoresPerStudent[$questionName])
             );
 
-            $rValue = $this->questionCalculator->rValue(
-                array_values($questionScoresPerStudent[$questionName]),
-                array_values($studentGrades)
-            );
+            $rValue = null;
+            try {
+                $rValue = $this->questionCalculator->rValue(
+                    array_values($questionScoresPerStudent[$questionName]),
+                    array_values($studentGrades)
+                );
+            } catch (\Exception $e) {
+                $rValue = '<error>Error calculating r</error>';
+            }
 
             $questionStatistics[$questionName] = ['p' => $pValue, 'r' => $rValue];
         }

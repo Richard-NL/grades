@@ -22,7 +22,12 @@ class GradeResultProcessor
         $grades = [];
 
         foreach ($sheetData->studentScores() as $studentId => $studentScores) {
-            $percentage = $this->gradeCalculator->calculatePercentage($sheetData->maxTestScore(), array_sum($studentScores));
+
+            $percentage = $this->gradeCalculator->calculatePercentage(
+                $sheetData->maxTestScore(),
+                array_sum($studentScores)
+            );
+
             $grades[$studentId] = $this->gradeCalculator->calculateGrade($percentage);
         }
         return $grades;
