@@ -5,11 +5,9 @@ namespace App\Command;
 use App\Question\QuestionStatisticProcessor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
+
 
 class QuestionStatisticsCommand extends Command
 {
@@ -28,8 +26,7 @@ class QuestionStatisticsCommand extends Command
     protected function configure()
     {
         $this
-            ->setDescription('Show statistics to determine the difficulty of a question')
-        ;
+            ->setDescription('Show statistics to determine the difficulty of a question');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -44,6 +41,7 @@ class QuestionStatisticsCommand extends Command
         }
 
         $table->render();
+
         return Command::SUCCESS;
     }
 }
